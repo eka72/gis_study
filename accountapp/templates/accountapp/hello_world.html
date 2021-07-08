@@ -4,8 +4,14 @@
 
     <div style="margin: 2rem; text-align: center">
         <h1> METHOD </h1>
-        <h5> {{ text }} </h5>
 
+        <form action="/account/hello/" method="post">
+            {% csrf_token %}
+            <input class="btn btn-dark rounded-pill px-4" type="submit" >
+
+        </form>
+
+        <h5> {{ text }} </h5>
 
 
     </div>
