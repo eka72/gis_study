@@ -12,12 +12,13 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 import os
 from pathlib import Path
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 from django.urls import reverse_lazy
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-local_env = open(os.path.join(BASE_DIR,'.env'))
+local_env = open(os.path.join(BASE_DIR, '.env'))
 
 env_list = dict()
 
@@ -25,7 +26,8 @@ while True:
     line = local_env.readline()
     if not line:
         break
-    line = line.replace('/n','')
+
+    line = line.replace('/n', '')
     start = line.find('=')
     key = line[:start]
     value = line[start+1:]
@@ -72,8 +74,7 @@ ROOT_URLCONF = 'gis_study.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates']
-        ,
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -138,10 +139,15 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
 
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
